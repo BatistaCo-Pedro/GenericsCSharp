@@ -1,7 +1,7 @@
 # GenericsCSharp
 
 This repository contains experiments with C# generics in Net6.0 (C# version 10). This repo is NOT supported by previous versions of the .NET Framework.
-Thsi repository is to be used as an example to Generics in C#.
+This repository is to be used as an example to Generics in C#.
 
 ### Algorithms are programmed as Generic Members and tested with a variaty of examples and own classes.
 
