@@ -25,8 +25,6 @@ public static class PrimSearch
     */
     static public int BinarySearch<TBinArr>(TBinArr[] array, TBinArr value) where TBinArr : IComparable<TBinArr>, IEquatable<TBinArr>
     {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
         int left = 0; //sets the left boundary as the first index of the array
         int right = array.Length - 1; //sets the right boundary as the last index of the array
         int middle = 0;
@@ -38,8 +36,6 @@ public static class PrimSearch
             //if the value is found, return the index
             if (array[middle].Equals(value)) 
             {
-                sw.Stop();
-                Console.WriteLine("Binary Search: " + sw.ElapsedMilliseconds + "ms");
                 return middle;
             }
             //if the value is bigger than the middle value, set the left boundary as the middle index + 1 --> value cannot be in the left side of the arry
@@ -55,7 +51,7 @@ public static class PrimSearch
                 right = middle - 1;
             }
         }
-        //if nothing is found, return -1 --> value is not in the array
+        //if nothing is found, return -1 --> value is not in the array;
         return -1;
     }
     #endregion
@@ -83,16 +79,12 @@ public static class PrimSearch
     */
     static public int LinearSearch<TLinArr>(TLinArr[] array, TLinArr value) where TLinArr : IEquatable<TLinArr>
     {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
         //loops through the array
         for (int i = 0; i < array.Length; i++)
         {
             //if the value is equal to the searched value, return the index
             if (array[i].Equals(value))
             {
-                sw.Stop();
-                Console.WriteLine("Linear Search: " + sw.ElapsedMilliseconds + "ms");
                 return i;
             }
         }
@@ -127,8 +119,6 @@ public static class SecSearch
     */
     public static int JumpSearch<TJmpArr>(TJmpArr[] array, TJmpArr value) where TJmpArr : IComparable<TJmpArr>, IEquatable<TJmpArr>
     {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
         //sets the jump size as the square root of the array length (optimal jump size)
         int step = (int)Math.Sqrt(array.Length);
         int prev = 0;
@@ -159,10 +149,9 @@ public static class SecSearch
         //if the value is found, return the index
         if (array[prev].Equals(value))
         {
-            sw.Stop();
-            Console.WriteLine("Jump Search: " + sw.ElapsedMilliseconds + "ms");
             return prev;
         }
+        //if nothing is found, return -1 --> value is not in the array
         return -1;
     }
     #endregion
@@ -192,8 +181,6 @@ public static class SecSearch
 
     public static int InterpolationSearch<TIntArr>(TIntArr[] array, TIntArr value) where TIntArr : IComparable<TIntArr>, IEquatable<TIntArr>
     {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
         int left = 0; //sets the left boundary as the first index of the array
         int right = array.Length - 1; //sets the right boundary as the last index of the array
         int middle = 0;
@@ -219,8 +206,6 @@ public static class SecSearch
             //if the value is found, return the index
             if (array[middle].Equals(value))
             {
-                sw.Stop();
-                Console.WriteLine("Interpolation search: " + sw.ElapsedMilliseconds + "ms");
                 return middle;
             }
             //if the value is bigger than the middle value, set the left boundary as the middle index + 1 --> value cannot be in the left side of the arry
@@ -236,6 +221,7 @@ public static class SecSearch
                 right = middle - 1;
             }
         }
+        //if nothing is found, return -1 --> value is not in the array
         return -1;
     }
     #endregion
