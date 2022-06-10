@@ -269,7 +269,6 @@ public static class PrimSort
         }
     }
     #endregion
-
 }
 
 public static class MutSort

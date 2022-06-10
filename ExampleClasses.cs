@@ -1,7 +1,7 @@
 #nullable disable warnings
 namespace Generics;
 
-#region Person base class
+#region TestClasses
 public class Person : IComparable<Person>, IEquatable<Person>
 {
     public string FirstName { get; private set; }
@@ -48,9 +48,7 @@ public class Person : IComparable<Person>, IEquatable<Person>
         }
     }
 }
-#endregion
 
-#region Student class : Person
 public class Student : Person, IEquatable<Student>, IComparable<Student>
 {
     public Student(string FirstName, string LastName, int Age) : base(FirstName, LastName, Age) { }
@@ -86,9 +84,7 @@ public class Student : Person, IEquatable<Student>, IComparable<Student>
         }
     }
 }
-#endregion
 
-#region Teacher class : Person
 public class Teacher : Person, IComparable<Teacher>, IEquatable<Teacher>
 {
     public Teacher(string FirstName, string LastName, int Age) : base(FirstName, LastName, Age) { }
@@ -125,4 +121,41 @@ public class Teacher : Person, IComparable<Teacher>, IEquatable<Teacher>
         }
     }
 }
+#endregion
+
+#region Arrays
+public class ArrayCreation
+{
+    public static Array CreateIntArray(int Size)
+    {
+        Random rnd = new Random();
+        Array Array = Array.CreateInstance(typeof(int), Size);
+        for(int i = 0; i < Size; i++)
+        {
+            Array.SetValue(rnd.Next(0, Size * 10), i);
+        }
+        return Array;
+    }
+}
+
+public class Convenience
+{
+    public static void PrintArray(Array Array)
+    {
+        for(int i = 0; i < Array.Length; i++)
+        {
+            Console.WriteLine(Array.GetValue(i));
+        }
+    }
+
+    public static void Stopwatch(Action Action)
+    {
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
+        Action();
+        sw.Stop();
+        Console.WriteLine(sw.ElapsedMilliseconds + "ms");
+    }
+}
+
 #endregion
